@@ -1,0 +1,84 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  serviceName: redis
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - image: redis
+        name: redis
+        ports:
+        - containerPort: 6379
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis
+  name: redis
+spec:
+  ports:
+  - port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    app: redis
+...
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gin-redis
+  name: gin-redis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gin-redis
+  template:
+    metadata:
+      labels:
+        app: gin-redis
+    spec:
+      containers:
+      - image: shubhamtatvamasi/gin-redis
+        name: gin-redis
+        env:
+        - name: REDIS_HOST
+          value: "redis"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: GIN_MODE
+          value: "release"
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: gin-redis
+  name: gin-redis
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 31000
+  type: NodePort
+  selector:
+    app: gin-redis
+...
