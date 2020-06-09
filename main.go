@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-  const greetings = "Welcome to Gin "
+  const greetings = "Welcome to Gin & Redis "
   var ctx = context.Background()
   redisHost := os.Getenv("REDIS_HOST")
   redisPort := os.Getenv("REDIS_PORT")
