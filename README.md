@@ -17,3 +17,8 @@ scale deployment
 kubectl scale deployment gin-redis --replicas 10
 ```
 
+Delete Deployment
+```bash
+kubectl delete -f https://raw.githubusercontent.com/ShubhamTatvamasi/gin-redis/master/deployment.yaml
+```
+
