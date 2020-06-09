@@ -6,3 +6,14 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/shubhamtatvamasi/gin-redis)](https://hub.docker.com/r/shubhamtatvamasi/gin-redis)
 [![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/shubhamtatvamasi/gin-redis/latest)](https://hub.docker.com/r/shubhamtatvamasi/gin-redis)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/shubhamtatvamasi/gin-redis)](https://hub.docker.com/r/shubhamtatvamasi/gin-redis)
+
+Deploy Redis and Gin
+```bash
+kubectl apply -f https://raw.githubusercontent.com/ShubhamTatvamasi/gin-redis/master/deployment.yaml
+```
+
+scale deployment
+```
+kubectl scale deployment gin-redis --replicas 10
+```
+
