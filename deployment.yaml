@@ -54,9 +54,22 @@ spec:
       labels:
         app: gin-redis
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
       - image: shubhamtatvamasi/gin-redis
         name: gin-redis
+        startupProbe:
+          httpGet:
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
         env:
         - name: REDIS_HOST
           value: "redis"
