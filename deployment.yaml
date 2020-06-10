@@ -59,6 +59,13 @@ spec:
       - image: shubhamtatvamasi/gin-redis
         name: gin-redis
         imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "100m"
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
         startupProbe:
           httpGet:
             path: /
