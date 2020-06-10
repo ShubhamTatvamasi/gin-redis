@@ -54,7 +54,7 @@ spec:
       labels:
         app: gin-redis
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 60
       containers:
       - image: shubhamtatvamasi/gin-redis
         name: gin-redis
