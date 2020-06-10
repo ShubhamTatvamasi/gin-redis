@@ -45,7 +45,7 @@ metadata:
     app: gin-redis
   name: gin-redis
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: gin-redis
