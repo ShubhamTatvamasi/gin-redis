@@ -58,6 +58,7 @@ spec:
       containers:
       - image: shubhamtatvamasi/gin-redis
         name: gin-redis
+        imagePullPolicy: Always
         startupProbe:
           httpGet:
             path: /
